@@ -7,8 +7,6 @@
       <router-link to="/register">Register</router-link>
       <router-link to="/create">Create</router-link>
     </nav>
-
-
 </div>
 </template>
 
@@ -24,7 +22,14 @@ export default {
 <style scoped>
   .header{
     padding-top: 2em;
+    margin-bottom: 7em;
     height: 6em;
     background-color: darkcyan;
+  }
+  #app > div.header > nav > a {
+    margin: 1em;
+    text-decoration: none;
+    color: blanchedalmond;
+
   }
 </style>

@@ -1,6 +1,6 @@
 <template>
  <div class="footer">
-    <v-card height="200">
+    <v-card height="140">
     <v-footer
       absolute
       class="font-weight-medium"
@@ -9,7 +9,7 @@
         class="text-center"
         cols="12"
       >
-        {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
+        {{ new Date().getFullYear() }} — <strong>SoftUni VueJs project</strong>
       </v-col>
     </v-footer>
   </v-card>
@@ -27,7 +27,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   #app > div.footer > div > footer{
-
+    color: blanchedalmond;
     background-color: darkcyan;
 }
 </style>

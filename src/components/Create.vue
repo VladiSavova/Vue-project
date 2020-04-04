@@ -1,6 +1,6 @@
 <template>
 <div>
-    Create view
+    <h1>Create view</h1>
 </div>
 </template>
 
