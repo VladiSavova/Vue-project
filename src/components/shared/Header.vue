@@ -7,6 +7,8 @@
       <router-link to="/register">Register</router-link>
       <router-link to="/create">Create</router-link>
     </nav>
+
+
 </div>
 </template>
 
@@ -21,15 +23,20 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .header{
-    padding-top: 2em;
-    margin-bottom: 7em;
-    height: 6em;
+    padding-top: 3em;
+    padding-bottom: 3em;
+    height: 7em;
+    margin-bottom: 4em;
     background-color: darkcyan;
+  }
+  #app > div.header > nav > a.router-link-exact-active.router-link-active {
+    color:hotpink;
   }
   #app > div.header > nav > a {
     margin: 1em;
     text-decoration: none;
-    color: blanchedalmond;
-
+    font-weight: 500;
+    height: 2em;
+    color: whitesmoke;
   }
 </style>
