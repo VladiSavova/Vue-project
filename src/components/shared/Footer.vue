@@ -30,4 +30,13 @@ export default {
     color: blanchedalmond;
     background-color: darkcyan;
 }
+.v-col {
+  width: 100%;
+  margin: 50px 0 0 0;
+  padding: 20px 0;
+  bottom: 0;
+  position: fixed;
+  text-align: center;
+  color: white;
+}
 </style>
