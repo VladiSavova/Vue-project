@@ -5,7 +5,7 @@
         <form @submit.prevent="create">
           <div class="form-group">
             <label for="title">Title:</label>
-            <input id="title" type="text" v-model="$v.title.$model" />
+            <input id="title" type="text" v-model="$v.title.$model"   @blur="$v.title.$touch" required/>
             <template v-if="$v.title.$error">
               <p class="alert" v-if="!$v.title.required">The title is required</p>
               <p class="alert" v-else-if="!$v.title.minLength">The title must be min 3 chars</p>
@@ -27,8 +27,8 @@
           </div>
          
           <div class="form-group">
-            <label for="imgUrl">Featured image url:</label>
-            <input id="imgUrl" type="url" v-model="$v.imgUrl.$model" />
+            <label for="imgUrl">Image Url</label>
+            <input id="imgUrl" type="url" v-model="$v.imgUrl.$model" @blur="$v.imgUrl.$touch" required />
             <template v-if="$v.imgUrl.$error">
               <p class="alert" v-if="!$v.imgUrl.required">The image url is required</p>
               <p class="alert" v-else-if="!$v.imgUrl.url">Not valid url</p>
@@ -36,8 +36,8 @@
           </div>
          
           <div class="form-group">
-            <label for="content">Content:</label>
-            <textarea id="content" v-model="$v.content.$model"></textarea>
+            <label for="content">Content </label>
+            <textarea id="content" v-model="$v.content.$model"  @blur="$v.content.$touch" required></textarea>
             <template v-if="$v.content.$error">
               <p class="alert" v-if="!$v.content.required">The content is required</p>
               <p class="alert" v-else-if="!$v.content.minLength">The contet must be min 64 chars</p>

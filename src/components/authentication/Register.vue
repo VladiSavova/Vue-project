@@ -5,7 +5,7 @@
 
       <div class="form-group">
         <label for="email">Email</label>
-        <input id="email" type="email" v-model="$v.email.$model" />
+        <input id="email" type="email" v-model="$v.email.$model"   @blur="$v.email.$touch" required/>
         <template v-if="$v.email.$error">
           <p class="alert" v-if="!$v.email.required">The email is required</p>
           <p class="alert" v-else-if="!$v.email.email">Not valid email</p>
@@ -14,16 +14,15 @@
     
       <div class="form-group">
         <label for="username">Username</label>
-        <input id="username" type="text" v-model="$v.username.$model" />
+        <input id="username" type="text" v-model="$v.username.$model"  @blur="$v.username.$touch" required />
         <template v-if="$v.username.$error">
           <p class="alert" v-if="!$v.username.required">The username is required</p>
           <p class="alert" v-else-if="!$v.username.minLength">The username must be min 3 chars</p>
         </template>
       </div>
-
       <div class="form-group">
         <label for="password">Password</label>
-        <input id="password" type="password" v-model="$v.password.$model" />
+        <input id="password" type="password" v-model="$v.password.$model" @blur="$v.password.$touch" required/>
         <template v-if="$v.password.$error">
           <p class="alert" v-if="!$v.password.required">The password is required</p>
           <p class="alert" v-else-if="!$v.password.minLength">Password must be minimum 6 symbols</p>
@@ -41,12 +40,7 @@
 
 <script>
 import { validationMixin } from "vuelidate";
-import {
-  required,
-  minLength,
-  maxLength,
-  email
-} from "vuelidate/lib/validators";
+import {  required, minLength, maxLength, email } from "vuelidate/lib/validators";
 
 export default {
   mixins: [validationMixin],
@@ -54,11 +48,9 @@ export default {
     return {
       username: "",
       email: "",
-      password: "",
-
+      password: ""
     };
   },
-  
   validations: {
     username: {
       required,
@@ -74,6 +66,11 @@ export default {
       maxLength: maxLength(16)
     },
     
+  },
+  methods: {
+    register () {
+      
+    }
   }
 };
 </script>
