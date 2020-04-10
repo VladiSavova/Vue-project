@@ -1,13 +1,14 @@
 <template>
 <div class="header">
   <nav>
-      <router-link to="/home">Home</router-link>
-      <router-link to="/profile">MyProfile</router-link>
+ 
+       <router-link to="/home">Home</router-link>
+      <router-link v-if="isLogged" to="/profile">MyProfile</router-link>
       <router-link to="/about">About</router-link>
-      <router-link to="/login">Login</router-link>
-      <router-link to="/register">Register</router-link>
-      <router-link to="/create">Create</router-link>
-      <a class="nav-link" href="/login" @click.prevent="logout">Logout</a>
+      <router-link v-if="!isLogged" to="/login">Login</router-link>
+      <router-link v-if="!isLogged" to="/register">Register</router-link>
+      <router-link v-if="isLogged" to="/create">Create</router-link>
+      <a class="nav-link" v-if="isLogged" href="/login" @click.prevent="logout">Logout</a>
 
     </nav>
 

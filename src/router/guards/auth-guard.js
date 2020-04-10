@@ -1,8 +1,8 @@
-import store from '../../store'
+import store from '../../store';
 
 export default (to, from, next) => {
     let isAuthenticated = false;
-console.log(store.getters.user);
+    console.log(store.getters.user);
 
     if (store.getters.user) {
         isAuthenticated =true;

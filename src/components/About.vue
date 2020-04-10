@@ -1,6 +1,7 @@
 <template>
     <div>
         <h1>ABOUT PAGE ...</h1>
+        <h2>This page is for site-post information.</h2>
     </div>
 </template>
 <script >

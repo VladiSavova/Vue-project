@@ -48,7 +48,7 @@ export default {
               
               const token = res.data.token
               localStorage.setItem('user-token', token)
-                router.push("/profile");
+                router.push("profile");
                 commit("setUser", res.data);
               })
               .catch(error => {
