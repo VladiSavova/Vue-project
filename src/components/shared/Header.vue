@@ -2,10 +2,13 @@
 <div class="header">
   <nav>
       <router-link to="/home">Home</router-link>
+      <router-link to="/profile">MyProfile</router-link>
       <router-link to="/about">About</router-link>
       <router-link to="/login">Login</router-link>
       <router-link to="/register">Register</router-link>
       <router-link to="/create">Create</router-link>
+      <a class="nav-link" href="/login" @click.prevent="logout">Logout</a>
+
     </nav>
 
 
@@ -13,10 +16,30 @@
 </template>
 
 <script>
+import router from '../../router/router';
 export default {
     name: 'Header',
  
-}
+    computed: {
+   
+   user() {
+      return this.$store.getters.user;
+    },
+    isLogged() {
+      return !!this.$store.getters.user;
+    },
+
+  },
+
+  methods: {
+    logout() {
+      // this.$store.dispatch("logout");
+      localStorage.removeItem('user-token')
+      router.push("/login");
+    }
+  }
+};
+
 
 </script>
 

@@ -3,12 +3,12 @@
     <h1> Login </h1>
     <form @submit.prevent="login">
     
-          <div class="form-group">
-        <label for="email">Email</label>
-        <input id="email" type="email" v-model="$v.email.$model" @blur="$v.email.$touch" required/>
-        <template v-if="$v.email.$error">
-          <p class="alert" v-if="!$v.email.required">The email is required</p>
-          <p class="alert" v-else-if="!$v.email.email">Not valid email</p>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input id="username" type="text" v-model="$v.username.$model"  @blur="$v.username.$touch" required />
+        <template v-if="$v.username.$error">
+          <p class="alert" v-if="!$v.username.required">The username is required</p>
+          <p class="alert" v-else-if="!$v.username.minLength">The username must be min 3 chars</p>
         </template>
       </div>
 
@@ -29,31 +29,56 @@
 
 <script>
 import { validationMixin } from "vuelidate";
-import {  required, minLength, maxLength, email } from "vuelidate/lib/validators";
+import {  required, minLength, maxLength } from "vuelidate/lib/validators";
 
 export default {
   mixins: [validationMixin],
   data() {
     return {
-      email: "",
+      username: "",
       password: "",
 
     };
   },
   
   validations: {
-      email: {
+      username: {
       required,
-      email
+
     },
     password: {
       required,
-      minLength: minLength(8),
+      minLength: minLength(6),
       maxLength: maxLength(16)
     },
     
+  },
+  computed: {
+    user() {
+      return this.$store.getters.user;
+    },
+  },
+
+  watch: {
+    user(value) {
+      if (value !== null && value !== undefined) {
+        this.$router.push("/");
+      }
+    }
+  },
+
+  methods: {
+    login() {
+      this.$store
+        .dispatch("login", {
+          username: this.username,
+          password: this.password
+        })
+        
+    }
   }
 };
+
 </script>
 
 <style scoped>

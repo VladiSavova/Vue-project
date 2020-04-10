@@ -40,7 +40,7 @@
             <textarea id="content" v-model="$v.content.$model"  @blur="$v.content.$touch" required></textarea>
             <template v-if="$v.content.$error">
               <p class="alert" v-if="!$v.content.required">The content is required</p>
-              <p class="alert" v-else-if="!$v.content.minLength">The contet must be min 64 chars</p>
+              <p class="alert" v-else-if="!$v.content.minLength">The contet must be min 16 chars</p>
               <p class="alert" v-else-if="!$v.content.maxLength">The title must be min 2000 chars</p>
             </template>
           </div>
@@ -54,27 +54,26 @@
 <script>
 import { validationMixin } from "vuelidate";
 import { required, minLength, maxLength, url } from "vuelidate/lib/validators";
+import { mapActions } from "vuex";
 export default {
   mixins: [validationMixin],
   data() {
     return {
       title: "",
-      content: "",
+      category: "",
       imgUrl: "",
-      category: ""
+      content: "",
     };
   },
-  
-    
-  validations: {
+    validations: {
     title: {
       required,
       minLength: minLength(3),
-      maxLength: maxLength(64)
+      maxLength: maxLength(16)
     },
     content: {
       required,
-      minLength: minLength(64),
+      minLength: minLength(10),
       maxLength: maxLength(2000)
     },
     imgUrl: {
@@ -84,8 +83,24 @@ export default {
     category: {
       required
     }
+  },
+    methods: {
+    ...mapActions(["createPost"]),
+    create() {
+      this.createPost({
+        title: this.title,
+        category: this.category,
+        imgUrl: this.imgUrl,
+        content: this.content
+      });
+      // this.title = null;
+      // this.category = null;
+      // this.imgUrl = null;
+      // this.content = null;
+    },
   }
 };
+
 </script>
 
 <style scoped>

@@ -20,6 +20,7 @@
           <p class="alert" v-else-if="!$v.username.minLength">The username must be min 3 chars</p>
         </template>
       </div>
+      
       <div class="form-group">
         <label for="password">Password</label>
         <input id="password" type="password" v-model="$v.password.$model" @blur="$v.password.$touch" required/>
@@ -62,14 +63,33 @@ export default {
     },
     password: {
       required,
-      minLength: minLength(8),
+      minLength: minLength(6),
       maxLength: maxLength(16)
     },
     
   },
+ computed: {
+    user() {
+      return this.$store.getters.user;
+    },
+
+  },
+  
+  watch: {
+    user(value) {
+      if (value !== null && value !== undefined) {
+        this.$router.push("/");
+      }
+    }
+  },
+
   methods: {
-    register () {
-      
+    register() {
+      this.$store.dispatch("register", {
+        email: this.email,
+        username: this.username,
+        password: this.password
+      });
     }
   }
 };
