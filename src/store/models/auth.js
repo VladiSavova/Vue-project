@@ -56,17 +56,19 @@ export default {
               });
           },
       
-          // logout({ commit }) {
-          //   axios.post(`auth/logout`).then(() => {
-          //     localStorage.removeItem('user-token')
-          //     router.push("/login");
-          //   });
+          logout({ commit }) {
+            // axios.post(`auth/logout`).then(() => {
+            //   localStorage.removeItem('user-token')
+            //   router.push("/login");
+            // });
       
-          //   commit("setUser", null);
-          // },
-        //   clearError({ commit }) {
-        //     commit("clearError");
-        //   }
+            commit("setUser", null);
+            localStorage.setItem('user-token', "")
+            router.push("/");
+          },
+          clearError({ commit }) {
+            commit("clearError");
+          }
 
     },
 

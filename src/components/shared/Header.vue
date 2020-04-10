@@ -33,9 +33,11 @@ export default {
 
   methods: {
     logout() {
-      // this.$store.dispatch("logout");
-      localStorage.removeItem('user-token')
-      router.push("/login");
+      this.$store.dispatch("logout");
+      // localStorage.removeItem('user-token')
+      // localStorage.clear();
+      router.push("/about");
+      console.log('im logged outtt')
     }
   }
 };

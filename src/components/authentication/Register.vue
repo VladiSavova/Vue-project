@@ -20,7 +20,7 @@
           <p class="alert" v-else-if="!$v.username.minLength">The username must be min 3 chars</p>
         </template>
       </div>
-      
+
       <div class="form-group">
         <label for="password">Password</label>
         <input id="password" type="password" v-model="$v.password.$model" @blur="$v.password.$touch" required/>
@@ -41,7 +41,7 @@
 
 <script>
 import { validationMixin } from "vuelidate";
-import {  required, minLength, maxLength, email } from "vuelidate/lib/validators";
+import {  required, minLength, maxLength, email} from "vuelidate/lib/validators";
 
 export default {
   mixins: [validationMixin],
@@ -49,7 +49,8 @@ export default {
     return {
       username: "",
       email: "",
-      password: ""
+      password: "",
+     
     };
   },
   validations: {
